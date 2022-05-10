@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<p>esrgewrv</p>
+	{% for b in books %}
+		<p>{{ b.name }}</p>
+		<p>{{ b.author }}</p>
+	{% empty %}
+		<p>No books found!</p>
+	{% endfor %}
+{% endblock %}

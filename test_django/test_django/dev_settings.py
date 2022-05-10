@@ -24,9 +24,9 @@ APPEND_SLASH = True
 SECRET_KEY = 'django-insecure-!)b!+fhnsz&bg%dl35-38gal%(gp&m*r7fe*c+!ll8iiq(3t3x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'test_django.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'test_django_db',
+        'USER': 'django',
+        'PASSWORD': 'Test11',
+        'HOST' : '192.168.10.250',
+        'PORT' : '5432',
     }
 }
 
