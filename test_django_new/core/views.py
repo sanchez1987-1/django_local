@@ -20,3 +20,6 @@ def index(request):
 def gettest(request, param):
     print(param)
     return HttpResponse('Bbbbbb')
+
+def login(request):
+    pass
