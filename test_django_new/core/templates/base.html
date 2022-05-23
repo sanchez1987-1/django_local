@@ -17,6 +17,13 @@
 		<a href="{% url 'gettest' 2 %}">aaaa</a>
 	{% endif %}
 
+	{% if request.user.is_authenticated %}
+		<p>Вы уже залогинины {{ request.user.name }} {{ request.user.email }}</p>
+		<p><a href="{% url 'logout' %}">Выйти</a></p> 
+	{% else %}
+		<p><a href="{% url 'login' %}">Войти</a></p> 
+	{% endif %}
+
 	{% block content %}
 	{% endblock %}
 </body>

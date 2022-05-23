@@ -11,6 +11,11 @@ class Book(models.Model):
 		on_delete=models.CASCADE, blank=False, null=False, unique=False, verbose_name='fio')
 	linked_by = models.ManyToManyField('User', through='BookUsers')
 
+	@property	
+	def likes(self):
+		res = [b.user.email for b in BookUsers.objects.filter(book_id=self.id)]
+		return res
+
 	def save(self, *args, **kwargs):
 		if self.author.type_of != USER_TYPE_AUTHOR:
 			raise ValueError("Only author.")
@@ -41,6 +46,9 @@ class BookUsers(models.Model):
 		blank=False, null=False, unique=False)
 	book = models.ForeignKey('Book', to_field='id', db_column='book_id', on_delete=models.CASCADE,
 		blank=False, null=False, unique=False, verbose_name='fio')
+
+	def __str__(self):
+		return f'{self.user.name} like {self.book.name}'
 
 	class Meta:
 		db_table = 'user_books_favorites'
