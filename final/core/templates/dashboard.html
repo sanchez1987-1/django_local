@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>Dashboard</h1>
+	<h2>Привет {{ user }}!</h2>
+	<b>Ваш тарифный план: </b>{{ rate }}
+	<p>Список зарегистрированных устройств пользователя:</p>
+	<ul>
+	{% for b in devices %}
+		<li><b>Название устройства: </b>{{ b.name }},  <b>IP-адрес: </b>{{ b.ip_addr }}</li>
+	{% empty %}
+		<li>No devices found!</li>
+	{% endfor %}
+	</ul>
+{% endblock %}

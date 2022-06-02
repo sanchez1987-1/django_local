@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Главная страница</h1>
+    {% if error is not None %}
+    <p>{{ request.error }}</p>
+    {% endif %}
+    <p class="lead">У нас есть API:
+        <ul>
+            <li>api/users/$ [name='user-list']</li>
+            <li>api/ ^users\.(?P<format>[a-z0-9]+)/?$ [name='user-list']</li>
+            <li>api/ ^users/(?P<pk>[^/.]+)/$ [name='user-detail']</li>
+            <li>api/ ^users/(?P<pk>[^/.]+)\.(?P<format>[a-z0-9]+)/?$ [name='user-detail']</li>
+            <li>api/ ^$ [name='api-root']</li>
+            <li>api/ ^\.(?P<format>[a-z0-9]+)/?$ [name='api-root']</li>
+            <li>api/ api-auth/ login/ [name='login']</li>
+            <li>api/ api-auth/ logout/ [name='logout']</li>
+        </ul>
+    </p>
+    <a class="btn btn-lg btn-primary" href="/api/" role="button">Посмотреть API &raquo;</a>
+{% endblock %}
